@@ -263,7 +263,7 @@ const app = express();
 app.use(express.json());
 
 // Секретный сегмент пути защищает сервер: без него запросы отклоняются
-app.post(`/mcp/${CONNECTOR_SECRET}`, async (req, res) => {
+app.all(`/mcp/${CONNECTOR_SECRET}`, async (req, res) => {
   try {
     const server = buildServer();
     const transport = new StreamableHTTPServerTransport({
